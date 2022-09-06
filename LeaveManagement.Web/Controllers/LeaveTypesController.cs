@@ -24,7 +24,7 @@ namespace LeaveManagement.Web.Controllers
             this.leaveTypeRepository = leaveTypeRepository;
             this.mapper = mapper;
         }
-
+        //ok
         // GET: LeaveTypes
         public async Task<IActionResult> Index()
         {
