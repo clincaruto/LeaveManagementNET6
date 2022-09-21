@@ -22,7 +22,7 @@ namespace LeaveManagement.Web.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("LeaveManagement.Data.Data.Employee", b =>
+            modelBuilder.Entity("LeaveManagement.Web.Data.Employee", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -100,9 +100,51 @@ namespace LeaveManagement.Web.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "408aa945-3d84-4421-8342-7269ec64d949",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "36201ed6-7dac-4044-bbb2-5e423622d4ba",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "clindropadmin@gmail.com",
+                            EmailConfirmed = true,
+                            Firstname = "System",
+                            Lastname = "Admin",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "CLINDROPADMIN@GMAIL.COM",
+                            NormalizedUserName = "CLINDROPADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAELtoDKd9WgqKUGjwzCyXuF7MsI0DGXT6PYTjb+Lyv3/mYqGjLh3VV3oqyNYto8WkcQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f54e5264-1bfa-454b-8c13-33a59a59733f",
+                            TwoFactorEnabled = false,
+                            UserName = "clindropadmin@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "3f4631bd-f907-4409-b415-ba356312e659",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7de131f5-9e2a-4d82-b4f1-b6852dc6d48c",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "clindropuser@gmail.com",
+                            EmailConfirmed = true,
+                            Firstname = "System",
+                            Lastname = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "CLINDROPUSER@GMAIL.COM",
+                            NormalizedUserName = "CLINDROPUSER@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAELxCtQTwvw/+qCuSPTazBST3IuVXLaeeMKbAgkcyOWGItMlDodIEtMTRRJCxTi1v9A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8059227c-e34f-4572-9cf1-7d770fabe11f",
+                            TwoFactorEnabled = false,
+                            UserName = "clindropuser@gmail.com"
+                        });
                 });
 
-            modelBuilder.Entity("LeaveManagement.Data.Data.LeaveAllocation", b =>
+            modelBuilder.Entity("LeaveManagement.Web.Data.LeaveAllocation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,7 +175,7 @@ namespace LeaveManagement.Web.Data.Migrations
                     b.ToTable("LeaveAllocations");
                 });
 
-            modelBuilder.Entity("LeaveManagement.Data.Data.LeaveType", b =>
+            modelBuilder.Entity("LeaveManagement.Web.Data.LeaveType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -184,6 +226,22 @@ namespace LeaveManagement.Web.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
+                            ConcurrencyStamp = "489bfbe6-84a9-4953-b69e-a2aca82ab3cd",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "cac43a7e-f7cb-4148-baaf-1acb431aebbf",
+                            ConcurrencyStamp = "2c65a8cd-aca2-468d-8e54-9255e1a8ec45",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -273,6 +331,18 @@ namespace LeaveManagement.Web.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "408aa945-3d84-4421-8342-7269ec64d949",
+                            RoleId = "cac43a6e-f7bb-4448-baaf-1add431ccbbf"
+                        },
+                        new
+                        {
+                            UserId = "3f4631bd-f907-4409-b415-ba356312e659",
+                            RoleId = "cac43a7e-f7cb-4148-baaf-1acb431aebbf"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -296,9 +366,9 @@ namespace LeaveManagement.Web.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("LeaveManagement.Data.Data.LeaveAllocation", b =>
+            modelBuilder.Entity("LeaveManagement.Web.Data.LeaveAllocation", b =>
                 {
-                    b.HasOne("LeaveManagement.Data.Data.LeaveType", "LeaveType")
+                    b.HasOne("LeaveManagement.Web.Data.LeaveType", "LeaveType")
                         .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -318,7 +388,7 @@ namespace LeaveManagement.Web.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("LeaveManagement.Data.Data.Employee", null)
+                    b.HasOne("LeaveManagement.Web.Data.Employee", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -327,7 +397,7 @@ namespace LeaveManagement.Web.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("LeaveManagement.Data.Data.Employee", null)
+                    b.HasOne("LeaveManagement.Web.Data.Employee", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -342,7 +412,7 @@ namespace LeaveManagement.Web.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LeaveManagement.Data.Data.Employee", null)
+                    b.HasOne("LeaveManagement.Web.Data.Employee", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -351,7 +421,7 @@ namespace LeaveManagement.Web.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("LeaveManagement.Data.Data.Employee", null)
+                    b.HasOne("LeaveManagement.Web.Data.Employee", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
